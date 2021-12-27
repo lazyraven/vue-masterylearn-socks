@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta />
+    <title>Vue Mastery</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1>Product goes here</h1> -->
+
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <!-- image goes here -->
+                    <img :src="image">
+                </div>
+
+                <div>
+                    <h1>{{ product }}</h1>
+                    <h1>{{ title }}</h1>
+
+
+                    <p v-if="inStock">In Stock </p>
+                    <p v-else>Out of stock</p>
+
+                    <!-- <p v-show="inStock">In Stock Show</p> -->
+                    <!-- <p v-if="inventory > 10">In Stock Bind</p>
+                    <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!!</p>
+                    <p v-else>Out of stock Bind</p> -->
+                    <ul>
+                        <li v-for="detail in details">
+                            {{detail}}
+                        </li>
+                    </ul>
+                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+                        class="color-circle" :style="{ backgroundColor: variant.color }">
+                    </div>
+
+                    <!-- update image by computed property -->
+
+                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateVariant(index)"
+                        class="color-circle" :style="{ backgroundColor: variant.color }">
+                    </div>
+                    <div style="color: red; font-size: 14px"></div>
+                </div>
+
+                <!-- classes  binding -->
+                <div class="color-circle" :class="{active: activeClass}"></div>
+                <div class="color-circle" :class="[isActive? activeClass: '']"></div>
+
+                <div class="cart">Cart({{ cart }})</div>
+
+                <button class="button" :class="{disabledButton: !inStock}" disabled="!inStock"
+                    v-on:click="addToCart">Add to Cart</button>
+                <!-- <button class="button" v-on:click="cart+=1">Add to Cart</button> -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js"></script>
+
+    <!-- Mount App -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>
