@@ -7,6 +7,7 @@ const app = Vue.createApp({
     },
     methods: {
         updateCartMethod() {
+            console.log("updateCartMethod called");
             this.cart += 1;
         }
     }

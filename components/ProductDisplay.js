@@ -67,6 +67,9 @@ app.component('product-display', {
             console.log("addToCartcalled")
             this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
         },
+        // updateCartMethod(id) {
+        //     this.cart.push(id)
+        // },
         // addToCart() {
         //     console.log("addToCart called")
         //     this.cart += 1
